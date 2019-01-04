@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send(database.users);
+  res.send("it is working");
 });
 
 app.post("/signin", (req, res) => {
@@ -45,7 +45,7 @@ app.put("/image", (req, res) => {
 app.post("/imageurl", (req, res) => {
   image.handleApiCall(req, res);
 });
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`app is running on ${process.env.PORT}`);
+let PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`app is running on ${PORT}`);
 });
