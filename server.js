@@ -8,6 +8,12 @@ const signIn = require("./controller/signIn");
 const profile = require("./controller/profile");
 const image = require("./controller/image");
 
+const app = express();
+var corsOptions = {
+  origin: 'https://brandenlacour.github.io/face-finder/',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 const db = knex({
   client: "pg",
   connection: {
@@ -16,9 +22,12 @@ const db = knex({
   }
 });
 
-const app = express();
+
+
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
+
+
 
 app.get("/", (req, res) => {
   res.send("it is working");
